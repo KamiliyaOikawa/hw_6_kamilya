@@ -26,7 +26,7 @@ class Sort:
         return f'List of numbers: {self.numbers}\n'
 
 
-num = Sort(numbers=[1, 6, 99, 12, 14, 55, 123, 22, 1, 90])
+num = Sort(numbers=[7, 1, 6, 99, 12, 14, 55, 123, 22, 1, 90])
 print(num)
 print(num.quick_sort())
 
