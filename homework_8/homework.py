@@ -1,6 +1,6 @@
 import sqlite3
-data_basa = sqlite3.connect("Plan.db")
-sql = data_basa.cursor()
+d_b = sqlite3.connect("Plan.db")
+sql = d_b.cursor()
 sql.execute(
     """CREATE TABLE IF NOT EXISTS users
     (Day TEXT,
@@ -8,22 +8,22 @@ sql.execute(
     Lunch TEXT,
     Evening TEXT)"""
 )
-data_basa.commit()
+d_b.commit()
 
 
 def registr():
-    global day, morning, lunch, evening
+    global day_week, plan_morning, plan_lunch, plan_evening
     while True:
-        day = input('What day of the week:')
-        morning = input('What are your plans for the morning:')
-        lunch = input('What are your lunch plans:')
-        evening = input('What are your plans for the evening: ')
+        day_week = input('What day of the week:')
+        plan_morning = input('What are your plans for the morning:')
+        plan_lunch = input('What are your lunch plans:')
+        plan_evening = input('What are your plans for the evening: ')
 
-        sql.execute(f"SELECT Day FROM users WHERE DAY = '{day}'")
+        sql.execute(f"SELECT Day FROM users WHERE DAY = '{day_week}'")
         if sql.fetchone() is None:
             sql.execute(f"INSERT INTO users VALUES (?,?,?,?)",
-                        ( day, morning, lunch, evening))
-            data_basa.commit()
+                        ( day_week, plan_morning, plan_lunch, plan_evening))
+            d_b.commit()
             for value in sql.execute("SELECT * FROM users"):
                 print(value)
         else:
