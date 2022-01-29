@@ -15,6 +15,7 @@ sq_l.execute(
 database_1.commit()
 
 
+
 def register_user():
     global user_login, user_password, balance
     user_login = input('Login')
@@ -32,7 +33,8 @@ def register_user():
             print(value)
     else:
         print('You lose')
-        for value in sq_l.execute('SELECT 8 FROM users')
+        for value in sq_l.execute('SELECT 8 FROM users'):
+            print('You lose')
 
 
 if __name__ == "__main__":
